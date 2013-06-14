@@ -55,7 +55,7 @@ $(document).ready(function () {
         else {
             history.back();
         }
-    }, true);
+    }, false);
 
 
     function exitAppPopup() {

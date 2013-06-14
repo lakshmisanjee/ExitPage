@@ -1,7 +1,11 @@
 // Put your custom code here
 
-$(document).ready(function () {
+//document.addEventListener("deviceready", onDeviceReady, true);
+// 
+//  function onDeviceReady(){
 
+
+$(document).ready(function () {
     $("#about").click(function () {
         window.location.href = "#page2";
     });
@@ -30,14 +34,39 @@ $(document).ready(function () {
         window.location.href = "#page2";
     });
 
+    //alert(backbutton);
+    //    var backbutton = document.getElementById('backbutton');
+    //    alert(backbutton);
+    //    backbutton.addEventListener('click', function () {
+
+   // $("#back-button").trigger("click");
+    //document.fireEvent("backbutton");
+  $("#backbutton").click(function(e){
+
+
+      // document.addEventListener("backbutton", function (e) {
+        alert(backbutton);
+        if ($('.ui-page-active').attr('id') == 'page1') {
+            // if ($.mobile.activePage.attr("id") == "page1") {
+            //if ($.mobile.activePage.is('#page1')) { 
+            e.preventDefault();
+            exitAppPopup();
+        }
+        else {
+            history.back();
+        }
+    }, true);
+
 
     function exitAppPopup() {
+        alert("a1");
         navigator.notification.confirm('Exit PhoneGap' + device.cordova + 'Demo?'
-        ,function (button) {
-    if (button == 2) {
-        navigator.app.exitApp();
-    }
-}
+        , function (button) {
+            if (button == 2) {
+                navigator.app.exitApp();
+
+            }
+        }
 , 'Exit'
 , 'No,Yes'
 );
@@ -45,24 +74,9 @@ $(document).ready(function () {
     }
 
 
-    document.addEventListener("backbutton", function (e) {
+    //    $('#button2').click(function () {
+    //        history.back();
+    //    });
 
-         if ($('.ui-page-active').attr('id') == 'page1') {
-      // if ($.mobile.activePage.attr("id") == "page1") {
-            e.preventDefault();
-            exitAppPopup();
-        }
-        else {
-            history.back();
-        }
-    }, false);
-
-
-
-
-    $('#button2').click(function () {
-        history.back();
-    });
-  
 
 });
